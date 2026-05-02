@@ -97,4 +97,4 @@ const CARDS = [
     handle: "@yogi",
     avatar: "/r/avatar.jpg",
   },
-]
+] 

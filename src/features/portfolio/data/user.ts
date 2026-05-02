@@ -31,10 +31,9 @@ export const USER: User = {
 - Enthusiast of open source and modern web technologies.
 `,  
   avatar: "/r/avatar.JPG",
-  ogImage:
-    "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?v=8",
-  namePronunciationUrl: "https://assets.chanhdai.com/audio/chanhdai.mp3",
-  timeZone: "Asia/Ho_Chi_Minh",
+  ogImage: "",
+  namePronunciationUrl: "",
+  timeZone: "Asia/Kolkata",
   keywords: [
     "yogi",
     "yogi sahu",
