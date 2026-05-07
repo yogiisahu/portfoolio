@@ -6,7 +6,6 @@ import { SiteHeader } from "@/components/site-header"
 const ScrollToTop = dynamic(() =>
   import("@/components/scroll-to-top").then((mod) => mod.ScrollToTop)
 )
-
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="group/layout">

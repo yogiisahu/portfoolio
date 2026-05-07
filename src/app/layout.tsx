@@ -2,6 +2,7 @@ import "@/styles/globals.css"
 
 import { GoogleTagManager } from "@next/third-parties/google"
 import type { Metadata, Viewport } from "next"
+import Script from "next/script"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
 import type { WebSite, WithContext } from "schema-dts"
 
@@ -23,9 +24,8 @@ function getWebSiteJsonLd(): WithContext<WebSite> {
 // Thanks @shadcn-ui, @tailwindcss
 const darkModeScript = String.raw`
   try {
-    if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
-    }
+    document.documentElement.classList.add('dark');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
   } catch (_) {}
 
   try {
@@ -97,7 +97,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: META_THEME_COLORS.light,
+  themeColor: META_THEME_COLORS.dark,
 }
 
 export default function RootLayout({
@@ -108,9 +108,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVariables} suppressHydrationWarning>
       <head>
-        <script
+        <Script
           id="dark-mode-script"
           dangerouslySetInnerHTML={{ __html: darkModeScript }}
+          strategy="beforeInteractive"
         />
         <script
           type="application/ld+json"
